@@ -1,0 +1,24 @@
+{
+  "name": "jnew",
+  "version": "1.0.0",
+  "description": "first json file",
+  "keywords": [
+    "first"
+  ],
+  "license": "ISC",
+  "author": "himanshu",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "chalk": "^4.1.2",
+    "colors": "^1.4.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.19.0",
+    "nodemon": "^3.1.10",
+    "simple-node-logger": "^21.8.12"
+  }
+}
