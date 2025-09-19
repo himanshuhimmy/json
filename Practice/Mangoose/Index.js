@@ -24,7 +24,6 @@ app.put(`/update/:brand`, async (req, resp) => {
   let data = await products.updateOne(req.params, {
     $set: req.body,
   });
-  console.log(req.params);
   resp.send(data);
 });
 
