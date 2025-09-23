@@ -1,5 +1,6 @@
 let express = require(`express`);
 let app = express();
+const mongoose = require("mongoose");
 let cors = require("cors");
 app.use(express.json());
 require(`./Config`);
@@ -18,14 +19,13 @@ app.post(`/post`, async (req, resp) => {
 });
 
 // not working
-app.put(`/put/:field/:data`, async (req, resp) => {
-  let { field, data } = req.params;
-
-  const filter = { [field]: data };
-  const update = { $set: req.body };
-
-  const response = await clients.updateOne(filter, update);
-  resp.send(response);
+app.put(`/put/:id`, async (req, resp) => {
+  const { id } = req.params;
+  const result = await clients.updateOne(
+    { _id: new mongoose.Types.ObjectId(id) },
+    { $set: req.body }
+  );
+  resp.send(result);
 });
 
 app.delete(`/delete/:name`, async (req, resp) => {
