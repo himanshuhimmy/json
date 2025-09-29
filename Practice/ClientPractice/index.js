@@ -1,26 +1,27 @@
 let express = require(`express`);
-let app = express();
 const mongoose = require("mongoose");
 let cors = require("cors");
+let client = require(`./Client`);
+
+let app = express();
 app.use(express.json());
 require(`./Config`);
 app.use(cors());
-let clients = require(`./Client`);
 
 app.get(`/get`, async (req, resp) => {
-  let data = await clients.find();
+  let data = await client.find();
   resp.send(data);
 });
 
 app.post(`/post`, async (req, resp) => {
-  let data = await clients(req.body);
+  let data = await client(req.body);
   let response = await data.save();
   resp.send(response);
 });
 
-app.put(`/put/:id`, async (req, resp) => {
-  const { id } = req.params;
-  const result = await clients.updateOne(
+app.put(`/update/:id`, async (req, resp) => {
+  let { id } = req.params;
+  let result = await client.updateOne(
     { _id: new mongoose.Types.ObjectId(id) },
     { $set: req.body }
   );
@@ -28,8 +29,8 @@ app.put(`/put/:id`, async (req, resp) => {
 });
 
 app.delete(`/delete/:name`, async (req, resp) => {
-  let data = await clients.deleteOne(req.params);
+  let data = await client.deleteOne(req.params);
   resp.send(data);
+  console.log(data);
 });
-
-app.listen(8000);
+app.listen(4000);
