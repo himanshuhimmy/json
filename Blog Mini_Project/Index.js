@@ -15,14 +15,14 @@ app.get(`/get`, async (req, resp) => {
 
 app.put(`/update/:id`, async (req, resp) => {
   let data = await blogs.updateOne(
-    { _id: new mongoose.Types.ObjectId(req.params) },
+    { _id: new mongoose.Types.ObjectId(req.params.id) },
     { $set: req.body }
   );
   resp.send(data);
 });
 
 app.post(`/post`, async (req, resp) => {
-  let data = await blogs(req.body);
+  let data = new blogs(req.body);
   let response = await data.save();
   resp.send(response);
   console.log(data);
