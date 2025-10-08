@@ -14,9 +14,9 @@ let BlogsSchema = new mongoose.Schema(
     views: "number",
     commentsCount: "number",
   },
-  { collection: `Blogs` }
+  { collection: `NewBlogs` }
 );
 
-let BlogsModel = mongoose.model(`Blogs`, BlogsSchema);
+let BlogsModel = mongoose.model(`NewBlogs`, BlogsSchema);
 
 module.exports = BlogsModel;

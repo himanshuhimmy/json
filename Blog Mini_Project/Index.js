@@ -13,6 +13,11 @@ app.get(`/get`, async (req, resp) => {
   resp.send(data);
 });
 
+app.get(`/get/:id`, async (req, resp) => {
+  let data = await blogs.find({ _id: req.params.id });
+  resp.send(data);
+});
+
 app.put(`/update/:id`, async (req, resp) => {
   let data = await blogs.updateOne(
     { _id: new mongoose.Types.ObjectId(req.params.id) },
