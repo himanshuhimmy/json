@@ -18,6 +18,9 @@ app.get(`/get/:id`, async (req, resp) => {
   resp.send(data);
 });
 
+// /author/:author
+// ! because url doesnot accept sapces to avoid this problem
+
 app.get(`/get/author/:author`, async (req, resp) => {
   let data = await blogs.find({ author: req.params.author });
   resp.send(data);
