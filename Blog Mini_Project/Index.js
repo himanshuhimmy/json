@@ -18,12 +18,12 @@ app.get(`/get/:id`, async (req, resp) => {
   resp.send(data);
 });
 
-app.get(`/get/:author`, async (req, resp) => {
+app.get(`/get/author/:author`, async (req, resp) => {
   let data = await blogs.find({ author: req.params.author });
   resp.send(data);
 });
 
-app.get(`/get/:genre`, async (req, resp) => {
+app.get(`/get/genre/:genre`, async (req, resp) => {
   let data = await blogs.find({ genre: req.params.genre });
   resp.send(data);
 });
