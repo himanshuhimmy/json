@@ -13,6 +13,9 @@ let BlogsSchema = new mongoose.Schema(
     likes: "number",
     views: "number",
     commentsCount: "number",
+    image: {
+      type: String,
+    },
   },
   { collection: `NewBlogs` }
 );

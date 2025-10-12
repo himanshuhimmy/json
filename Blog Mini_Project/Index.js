@@ -18,6 +18,21 @@ app.get(`/get/:id`, async (req, resp) => {
   resp.send(data);
 });
 
+app.get(`/get/:author`, async (req, resp) => {
+  let data = await blogs.find({ author: req.params.author });
+  resp.send(data);
+});
+
+app.get(`/get/:genre`, async (req, resp) => {
+  let data = await blogs.find({ genre: req.params.genre });
+  resp.send(data);
+});
+
+app.get(`/get/:title`, async (req, resp) => {
+  let data = await blogs.find({ title: req.params.title });
+  resp.send(data);
+});
+
 app.put(`/update/:id`, async (req, resp) => {
   let data = await blogs.updateOne(
     { _id: new mongoose.Types.ObjectId(req.params.id) },
